@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Popup</title>
+      <link rel="stylesheet" href="Register.css">
+      <script>
+      var tp = document.forms["myForm"]["EMail"];
+
+  function goBack() {
+    window.history.back();
+  }
+
+function validatePassword(){
+  if(document.getElementById("pass1").value != document.getElementById("pass2").value) {
+    document.getElementById("pass2").setCustomValidity("Passwords Don't Match");
+  } else {
+    document.getElementById("pass2").setCustomValidity('');
+  }
+}
+
+function submit() {
+  document.getElementById("myForm").submit();
+}
+
+function multiplesubmit() {
+  validatePassword();
+  submit();
+}
+
+
+      </script>
+
+</head>
+<body>
+  <div id="wrapper">
+  <div id="login-container">
+  	<div id="login-header">Welcome<br/>
+  	Back</div>
+  	<div id="form">
+  	<form action="homepage.html" method="POST">
+  		<label for="tp-number">TP Number</label></p>
+  			<input type="text" name="tp-number" maxlength="8" size="100" class="inputxt" style="text-transform:uppercase" required/></p>
+
+  		<label for="password">Password </label></p>
+  			<input type="password" name="password" size="100" maxlength="40" class="inputpass" required /></p>
+
+  		<input type="submit" name="login-button" value="Login" class="Log_in"/></form></div>
+  </div>
+
+
+  <div id="register-container"></div>
+  	<div id="register-background-layer"/>
+  	<a name="register" href ="Register.html#popup" class="register">Register</a>
+  	<div id="register-header" >New to here?</div></p>
+  	<div id="register-caption">Register here to start your journey with us.</div>
+  </div>
+  <div class="container">
+  <div class="popup" id="popup">
+    <div class="popup-inner">
+      <img src="Images/travelokylogo.PNG" class="user">
+      <h2>Sign up here</h2>
+      <form name="myForm"  method="post" action="homepage.html">
+        <p>TP Number</p>
+        <input type="text" placeholder="TP-number" required="required" pattern=".{8,8}" id="email11" name="tp" title="TP123456">
+        <p>password</p>
+        <input type="password" placeholder="Enter password" required="required" id="pass1" onchange="validatePassword()" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" title="Please include at least 1 uppercase character, 1 lowercase character, and 1 number.">
+        <p>Confirm password</p>
+        <input type="password" placeholder="Retype password" required="required" id="pass2" onkeyup="validatePassword()">
+        <button type="submit" class="Sign_up" onclick="multiplesubmit()">submit</button>
+        <p>Have an account ?? <a class="sign_in" href="#"> Login here</a></p>
+      </form>
+      <a class="closepopup" id="x" onclick="goBack()">X</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
